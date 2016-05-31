@@ -119,6 +119,32 @@ public class MainActivity extends AppCompatActivity {
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerType.setAdapter(adapter2);
         // Isto faz a gestão do que vai apresentar ao utilizador!
+
+        //->Nova Funcionalidade:Apagar Álbum
+        //Vou usar o LongClick para ser possível apagar os mesmos...
+        //___________________________________________________________________________________________________________________________________
+
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener(){
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id){
+                //Código que é executado quando se clica num item da listviewmusics
+
+                Toast.makeText(MainActivity.this, "Apagou o Álbum!", Toast.LENGTH_SHORT).show();
+
+
+                //O que vai permitir apagar...
+                listaMusicas.remove(position);
+
+                //Atualizar de novo a lista de álbuns...
+                ArrayAdapter<String>adapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_list_item_1,listaMusicas);
+
+                ListView listView = (ListView) findViewById(R.id.listviewmusics);
+                listView.setAdapter(adapter);
+
+                return true;
+            }
+        });
+        //____________________________________________________________________________________________________________________________________
     }
 
 
