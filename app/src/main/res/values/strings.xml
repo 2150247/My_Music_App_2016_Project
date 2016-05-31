@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name" translatable="false">MyMusicApp2016</string>
+    <string name="find_music" translatable="false">Find Music</string>
+    <string name="search" translatable="false">Search</string>
+    <string name="add_album" translatable="false">Add Album</string>
+    <string name="link" translatable="false">Invalid Link</string>
+    <string name="showing" translatable="false">Showing all Musics.</string>
+    <string name="noresults" translatable="false">No results found. Showing all Musics.</string>
+    <string name="ok" translatable="false">Ok</string>
+    <string name="inform" translatable="false">No data music inserted! Please insert...</string>
+    <string name="newsongadd" translatable="false">New Music Add!</string>
+    <string name="cancel" translatable="false">Cancel</string>
+    <string name="cancelled" translatable="false">Cancelled!</string>
+    <string name="new_datamusic" translatable="false">Insert data music please</string>
+    <string name="new_song" translatable="false">New Music</string>
+
+    <string-array name="options_spinner">
+        <item>All</item>
+        <item>Artist</item>
+        <item>Album</item>
+        <item>Year</item>
+        <item>Rating</item>
+    </string-array>
+</resources>

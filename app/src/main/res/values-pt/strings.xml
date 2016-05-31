@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MyMusicApp2016</string>
+    <string name="add_album">Adicionar Album</string>
+    <string name="find_music">Encontrar Musica</string>
+    <string name="search">Procurar</string>
+    <string name="new_song">Nova Música</string>
+    <string name="link">Link Inválido</string>
+    <string name="showing">Todos os resultados</string>
+    <string name="noresults">Sem Resultados. Todos os resultados mostrados.</string>
+    <string name="ok">Ok</string>
+    <string name="inform">Sem dados de músicas! Por favor insira dados...</string>
+    <string name="newsongadd">Nova música adicionada!</string>
+    <string name="cancel">Cancelar</string>
+    <string name="cancelled">Cancelado!</string>
+    <string name="new_datamusic">Por favor insira os dados</string>
+
+    <string-array name="options_spinner">
+        <item>Tudo</item>
+        <item>Artista</item>
+        <item>Album</item>
+        <item>Ano</item>
+        <item>Pontuação</item>
+    </string-array>
+
+</resources>

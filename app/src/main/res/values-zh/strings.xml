@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MyMusicApp2016</string>
+    <string name="add_album" translatable="false">添加相冊</string>
+    <string name="cancel" translatable="false">取消</string>
+    <string name="cancelled" translatable="false"> 取消</string>
+    <string name="find_music" translatable="false">找樂</string>
+    <string name="inform" translatable="false">沒有數據的歌曲！請輸入數據...</string>
+    <string name="link" translatable="false">鏈接無效</string>
+    <string name="new_datamusic" translatable="false">請輸入數據</string>
+    <string name="new_song" translatable="false">新樂</string>
+    <string name="newsongadd" translatable="false">新歌加！</string>
+    <string name="noresults" translatable="false">沒有結果。顯示的所有結果。</string>
+    <string name="ok" translatable="false">行</string>
+    <string name="search" translatable="false">搜索</string>
+    <string name="showing" translatable="false"> 所有的結果</string>
+
+    <string-array name="options_spinner">
+        <item>所有</item>
+        <item>藝術家</item>
+        <item>專輯</item>
+        <item>年</item>
+        <item>標點</item>
+    </string-array>
+</resources>
