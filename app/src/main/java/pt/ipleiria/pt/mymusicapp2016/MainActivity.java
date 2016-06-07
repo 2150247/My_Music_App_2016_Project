@@ -26,6 +26,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
     public static final String TAG = "MainActivity";
@@ -60,12 +61,32 @@ public class MainActivity extends AppCompatActivity {
         //                        |                                                   |
         //                        |___________________________________________________|
 
-        listaMusicas = new ArrayList<String>();
-        listaMusicas.add("Avenged Sevenfold ❂ Hail to the King ❂ 2013 ❂ ✭ 5 Rating ✭");
+
+
+
+
+
+        //->Funcionalidade Nova:Persistir Dados ->Continuação*
+        //__________________________________________________________________________________________
+
+        SharedPreferences sp = getSharedPreferences("appAlbuns",0);
+        Set<String> albumSet = sp.getStringSet("albumKey", new HashSet<String>());
+
+        Log.e(TAG, "Estou aqui -> onCreate->Persistir Dados()");
+        //__________________________________________________________________________________________
+
+
+
+
+
+        listaMusicas = new ArrayList<String>(albumSet);
+
+        //Isto agora não interessa, pois já é possivel guardar os dados com a persistencia de dados...
+        /*listaMusicas.add("Avenged Sevenfold ❂ Hail to the King ❂ 2013 ❂ ✭ 5 Rating ✭");
         listaMusicas.add("Limp Bizkit ❂ Significant Other ❂ 1999 ❂ ✭ 4 Rating ✭");
         listaMusicas.add("Linkin Park ❂ Meteora ❂ 2003 ❂ ✭ 4 Rating ✭");
         listaMusicas.add("Seather ❂ Disclaimer II ❂ 2004 ❂ ✭ 3 Rating ✭");
-        listaMusicas.add("Korn ❂ Issues ❂ 1999 ❂ ✭ 4 Rating ✭");
+        listaMusicas.add("Korn ❂ Issues ❂ 1999 ❂ ✭ 4 Rating ✭");*/
 
 
 
@@ -82,11 +103,12 @@ public class MainActivity extends AppCompatActivity {
         //Fazer cada musica ser clicavel com ligação ao youtube:
 
         linkYoutube = new ArrayList<String>();
-        linkYoutube.add("https://www.youtube.com/watch?v=bT8FEOJEFcI&list=PLzOQr4GdVhWs0D8RA6uHlVWXtAJnw6k7y");
+
+        /*linkYoutube.add("https://www.youtube.com/watch?v=bT8FEOJEFcI&list=PLzOQr4GdVhWs0D8RA6uHlVWXtAJnw6k7y");
         linkYoutube.add("https://www.youtube.com/watch?v=ZpUYjpKg9KY&index=4&list=PLsMILDNKDKSE5LVmUS2xeod9Q9JAJI4u5");
         linkYoutube.add("https://www.youtube.com/watch?v=U6R-twDkrcI&list=PLBiPNxqFKPZJAC_So1nqBa_TEYCBkanZL");
         linkYoutube.add("https://www.youtube.com/watch?v=mF53On_P7qI&list=PLVMCuf3Y8oLD3hnzB_coBQUI2ktTaTGnv");
-        linkYoutube.add("https://www.youtube.com/watch?v=2s3iGpDqQpQ&list=PLDgiaVwE3PvFLE6Hcqb7P18GxVOc8NRer&index=2");
+        linkYoutube.add("https://www.youtube.com/watch?v=2s3iGpDqQpQ&list=PLDgiaVwE3PvFLE6Hcqb7P18GxVOc8NRer&index=2");*/
 
 
 
@@ -147,8 +169,11 @@ public class MainActivity extends AppCompatActivity {
                 listView.setAdapter(adapter);
 
                 return true;
+
             }
         });
+
+                Log.e(TAG, "Estou aqui -> Apagar Álbuns()");
         //____________________________________________________________________________________________________________________________________
     }
 
@@ -158,9 +183,9 @@ public class MainActivity extends AppCompatActivity {
 
         //->Nova Funcionalidade:Persistir Dados
     //________________________________________________________________________________________________________________
-          //Criar o método onStop
-    @Override
-    protected void onStop(){
+        //Criar o método onStop
+   @Override
+   protected void onStop(){
         super.onStop();
 
         Toast.makeText(MainActivity.this, "A guardar dados...", Toast.LENGTH_SHORT).show();
@@ -177,13 +202,16 @@ public class MainActivity extends AppCompatActivity {
         HashSet albumSet=new HashSet (listaMusicas);
 
           //Aqui vai ser pedido a chave(Dada por mim) e os valores (Dados Albuns)...
-        edit.putStringSet("albumKey"/*Chave*/,albumSet /*Valor*/);
+        edit.putStringSet("albumKey"/*Chave*/, albumSet /*Valor*/);
 
         //ENVIAR ESTE CONTEÚDO PARA O COMMIT!!
         edit.commit();
 
-    }
+        Log.e(TAG, "Estou aqui -> onStop-Persistir Dados()");
+    }     // Agora para ir buscar o conteúdo à memória, faço o resto no onCreate...Continua*
+
      //_________________________________________________________________________________________________________________
+
 
 
 
