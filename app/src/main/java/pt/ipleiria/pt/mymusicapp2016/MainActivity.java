@@ -3,6 +3,7 @@ package pt.ipleiria.pt.mymusicapp2016;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.service.notification.NotificationListenerService;
 import android.support.v7.app.AppCompatActivity;
@@ -23,6 +24,7 @@ import android.widget.Toast;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -120,6 +122,9 @@ public class MainActivity extends AppCompatActivity {
         spinnerType.setAdapter(adapter2);
         // Isto faz a gestão do que vai apresentar ao utilizador!
 
+
+
+
         //->Nova Funcionalidade:Apagar Álbum
         //Vou usar o LongClick para ser possível apagar os mesmos...
         //___________________________________________________________________________________________________________________________________
@@ -146,6 +151,41 @@ public class MainActivity extends AppCompatActivity {
         });
         //____________________________________________________________________________________________________________________________________
     }
+
+
+
+
+
+        //->Nova Funcionalidade:Persistir Dados
+    //________________________________________________________________________________________________________________
+          //Criar o método onStop
+    @Override
+    protected void onStop(){
+        super.onStop();
+
+        Toast.makeText(MainActivity.this, "A guardar dados...", Toast.LENGTH_SHORT).show();
+
+
+          //Usando o Share Preferences vai se então fazer ser possível guardar os álbuns...
+        SharedPreferences sp= getSharedPreferences("appAlbuns",0); //A shared vai ser indentificada por um nome ! Neste ex: "appAlbuns", O "0" é o modo privado, fica la tudo guardado.
+
+
+          //Agora crio um editor que vai guardar as preferências
+        SharedPreferences.Editor edit = sp.edit();
+
+          // Irá fazer com que dê para guardar os albuns
+        HashSet albumSet=new HashSet (listaMusicas);
+
+          //Aqui vai ser pedido a chave(Dada por mim) e os valores (Dados Albuns)...
+        edit.putStringSet("albumKey"/*Chave*/,albumSet /*Valor*/);
+
+        //ENVIAR ESTE CONTEÚDO PARA O COMMIT!!
+        edit.commit();
+
+    }
+     //_________________________________________________________________________________________________________________
+
+
 
 
     public void pesquisar(View view) {
