@@ -20,6 +20,7 @@
         <item>Artist</item>
         <item>Album</item>
         <item>Year</item>
+        <item>Publisher</item>
         <item>Rating</item>
     </string-array>
 </resources>

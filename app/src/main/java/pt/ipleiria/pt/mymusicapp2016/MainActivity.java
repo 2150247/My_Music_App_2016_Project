@@ -273,6 +273,14 @@ public class MainActivity extends AppCompatActivity {
                         search_music.add(c);
                     }
                 }
+            }else if (PosicaoItem==5) {
+                for (String c : listaMusicas) {
+                    String[] s = c.split("\\ ❂");
+                    String rt = s[4];
+                    if ((rt.toLowerCase().contains(termo.toLowerCase()))) {
+                        search_music.add(c);
+                    }
+                }
             }
             boolean vazia = search_music.isEmpty();
 
@@ -311,6 +319,7 @@ public class MainActivity extends AppCompatActivity {
                 EditText Artist = (EditText)al.findViewById(R.id.editText_artista);
                 EditText Album = (EditText)al.findViewById(R.id.editText_album);
                 EditText Year = (EditText)al.findViewById(R.id.editText_year);
+                EditText Publisher = (EditText)al.findViewById(R.id.editText_editora);
                 RatingBar Pontuacao = (RatingBar)al.findViewById(R.id.ratingBar);
                 EditText Play = (EditText)al.findViewById(R.id.editText_play);
 
@@ -318,6 +327,7 @@ public class MainActivity extends AppCompatActivity {
                 String artist = Artist.getText().toString();
                 String album = Album.getText().toString();
                 String year = Year.getText().toString();
+                String editora = Publisher.getText().toString();
                 int pontuacao_rating = (int)Pontuacao.getRating();  //float pontuacao_rating = Pontuacao.getRating()->Assim era decimal!
                 String video = Play.getText().toString();
 
@@ -327,13 +337,13 @@ public class MainActivity extends AppCompatActivity {
 
 
                 //Validações
-                if(artist.length() == 0 || album.length() == 0 || year.length() == 0 || video.length() == 0){
+                if(artist.length() == 0 || album.length() == 0 || year.length() == 0 || editora.length() == 0 || video.length() == 0){
                     Toast.makeText(MainActivity.this, R.string.inform, Toast.LENGTH_SHORT).show();
                     return;
                 }
 
 
-                    String newMusic = artist + " ❂ " + album + " ❂ " + year + " ❂ " + " ✭ " + pontuacao_rating + " Rating ✭ ";
+                    String newMusic = artist + " ❂ " + album + " ❂ " + year + " ❂ " + editora + " ❂ " +  " ✭ " + pontuacao_rating + " Rating ✭ ";
 
 
 

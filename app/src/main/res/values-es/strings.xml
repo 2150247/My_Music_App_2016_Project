@@ -21,6 +21,7 @@
         <item>Artista</item>
         <item>Album</item>
         <item>Año</item>
+        <item>Editorial</item>
         <item>Puntuacion</item>
     </string-array>
 </resources>

@@ -22,6 +22,12 @@
         android:id="@+id/editText_year" />
 
     <EditText
+        android:hint="Editora"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText_editora" />
+
+    <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/editText_play"
