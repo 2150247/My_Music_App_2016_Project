@@ -15,6 +15,12 @@
     <string name="search" translatable="false">搜索</string>
     <string name="showing" translatable="false"> 所有的結果</string>
 
+    <string name="guardar_albuns" translatable="false">保存相冊...</string>
+    <string name="eliminar_album" translatable="false">刪除相冊</string>
+    <string name="alert_album" translatable="false">你要刪除相冊？</string>
+    <string name="delete" translatable="false">刪除</string>
+    <string name="delete_album" translatable="false"> 刪除專輯</string>
+
     <string-array name="options_spinner">
         <item>所有</item>
         <item>藝術家</item>

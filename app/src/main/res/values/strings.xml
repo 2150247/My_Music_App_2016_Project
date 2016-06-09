@@ -14,6 +14,11 @@
     <string name="cancelled" translatable="false">Cancelled!</string>
     <string name="new_datamusic" translatable="false">Insert data music please</string>
     <string name="new_song" translatable="false">New Music</string>
+    <string name="guardar_albuns" translatable="false">Save Album...</string>
+    <string name="eliminar_album" translatable="false">Delete Album</string>
+    <string name="alert_album" translatable="false">Really delete album?</string>
+    <string name="delete" translatable="false">Delete</string>
+    <string name="delete_album" translatable="false">Deleted Album</string>
 
     <string-array name="options_spinner">
         <item>All</item>

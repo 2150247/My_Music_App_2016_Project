@@ -166,13 +166,13 @@ public class MainActivity extends AppCompatActivity {
 
                 //Mensagem de aviso antes de apagar...
                 AlertDialog.Builder alerta=new AlertDialog.Builder(MainActivity.this);
-                alerta.setTitle("Eliminar Album");
-                alerta.setMessage("Deseja mesmo apagar o álbum?");
-                alerta.setNegativeButton("Cancelar", null);
-                alerta.setPositiveButton("Apagar", new DialogInterface.OnClickListener() {
+                alerta.setTitle(R.string.eliminar_album);
+                alerta.setMessage(R.string.alert_album);
+                alerta.setNegativeButton(R.string.cancel, null);
+                alerta.setPositiveButton(R.string.delete, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(MainActivity.this, "Apagou o Álbum!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, R.string.delete_album, Toast.LENGTH_SHORT).show();
 
 
                         //O que vai permitir apagar...
@@ -240,7 +240,7 @@ public class MainActivity extends AppCompatActivity {
    protected void onStop(){
         super.onStop();
 
-        Toast.makeText(MainActivity.this, "A guardar dados...", Toast.LENGTH_SHORT).show();
+        Toast.makeText(MainActivity.this, (R.string.guardar_albuns), Toast.LENGTH_SHORT).show();
 
 
           //Usando o Share Preferences vai se então fazer ser possível guardar os álbuns...

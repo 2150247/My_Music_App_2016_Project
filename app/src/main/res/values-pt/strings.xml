@@ -14,6 +14,12 @@
     <string name="cancel">Cancelar</string>
     <string name="cancelled">Cancelado!</string>
     <string name="new_datamusic">Por favor insira os dados</string>
+    <string name="guardar_albuns" translatable="false">A guardar álbum...</string>
+    <string name="eliminar_album" translatable="false">Apagar Álbum</string>
+    <string name="alert_album" translatable="false">Deseja mesmo apagar o álbum?</string>
+    <string name="delete" translatable="false">Apagar</string>
+    <string name="delete_album" translatable="false">Álbum apagado</string>
+
 
     <string-array name="options_spinner">
         <item>Tudo</item>

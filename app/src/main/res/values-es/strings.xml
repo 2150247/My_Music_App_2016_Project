@@ -14,6 +14,11 @@
     <string name="ok" translatable="false">Ok</string>
     <string name="search" translatable="false"> Búsqueda</string>
     <string name="showing" translatable="false">Todos los resultados</string>
+    <string name="guardar_albuns" translatable="false">Guardar álbum ...</string>
+    <string name="eliminar_album" translatable="false">Eliminar álbum</string>
+    <string name="alert_album" translatable="false">¿Desea borrar álbum?</string>
+    <string name="delete" translatable="false">Borrar</string>
+    <string name="delete_album" translatable="false"> Álbum Suprimido</string>
 
 
     <string-array name="options_spinner">
