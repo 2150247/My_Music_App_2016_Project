@@ -19,11 +19,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.RatingBar;
+import android.widget.SimpleAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -89,10 +91,14 @@ public class MainActivity extends AppCompatActivity {
         listaMusicas.add("Korn ❂ Issues ❂ 1999 ❂ ✭ 4 Rating ✭");*/
 
 
+        //________________________________________________________
+        //Nova Funcionalidade-> Após ter definido o novo layout e em baixo o ter chamado...Fas-se p seguinte:
+        SimpleAdapter adapter = createSimpleAdapter(listaMusicas);
 
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, listaMusicas);
+                //ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                //android.R.layout.simple_list_item_1, listaMusicas);
+        //->Deixou de ser necessário após o novo layout
+        //_________________________________________________________
 
 
         ListView listView = (ListView) findViewById(R.id.listviewmusics); //R é a class das constantes.
@@ -163,7 +169,8 @@ public class MainActivity extends AppCompatActivity {
                 listaMusicas.remove(position);
 
                 //Atualizar de novo a lista de álbuns...
-                ArrayAdapter<String>adapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_list_item_1,listaMusicas);
+                //ArrayAdapter<String>adapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_list_item_1,listaMusicas);
+                SimpleAdapter adapter = createSimpleAdapter(listaMusicas);
 
                 ListView listView = (ListView) findViewById(R.id.listviewmusics);
                 listView.setAdapter(adapter);
@@ -176,6 +183,38 @@ public class MainActivity extends AppCompatActivity {
                 Log.e(TAG, "Estou aqui -> Apagar Álbuns()");
         //____________________________________________________________________________________________________________________________________
     }
+
+
+
+
+    //-->Nova funcionalidade: Novo método após as modificações onStop e onCreate....Isto é para usar o novo layout com cliparts
+    //_______________________________________________________________________________________________
+
+    private SimpleAdapter createSimpleAdapter(ArrayList<String> listaMusicas) {
+        List<HashMap<String, String>> simpleAdapterData = new ArrayList<HashMap<String, String>>();
+
+        for (String c : listaMusicas) {
+            HashMap<String, String> hashMap = new HashMap<>();
+
+            String[] split = c.split(" \\❂ ");
+            Log.e(TAG, ""+c+" "+split.length);
+            hashMap.put("artist", split[0]);
+            hashMap.put("album", split[1]);
+            hashMap.put("year", split[2]);
+            hashMap.put("editora", split[3]);
+            hashMap.put("pontuacao_rating", split[4]);
+
+
+            simpleAdapterData.add(hashMap);
+        }
+
+        String[] from = {"artist", "album", "year", "editora","pontuacao_rating"};
+        int[] to = {R.id.textView_artista, R.id.textView_album, R.id.textView_ano, R.id.textView_editora, R.id.textView_rating};
+        SimpleAdapter simpleAdapter = new SimpleAdapter(getBaseContext(), simpleAdapterData, R.layout.listview_albuns, from, to);
+        return simpleAdapter;
+    }
+    //_________________________________________________________________________________________________
+
 
 
 
@@ -230,8 +269,9 @@ public class MainActivity extends AppCompatActivity {
 
 
         if (termo.equals("")) {
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                    android.R.layout.simple_list_item_1, listaMusicas);
+            //ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                   // android.R.layout.simple_list_item_1, listaMusicas);
+            SimpleAdapter adapter = createSimpleAdapter(listaMusicas);
             lv.setAdapter(adapter);
             Toast.makeText(MainActivity.this, R.string.showing, Toast.LENGTH_SHORT).show();
         } else {
@@ -286,13 +326,15 @@ public class MainActivity extends AppCompatActivity {
 
 
             if (!vazia) {
-                ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                        android.R.layout.simple_list_item_1, search_music);
+                //ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                       //android.R.layout.simple_list_item_1, search_music);
+                SimpleAdapter adapter = createSimpleAdapter(search_music);
                 lv.setAdapter(adapter);
                 Toast.makeText(MainActivity.this, R.string.showing, Toast.LENGTH_SHORT).show();
             } else {
-                ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                        android.R.layout.simple_list_item_1, listaMusicas);
+                //ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                        //android.R.layout.simple_list_item_1, listaMusicas);
+                SimpleAdapter adapter = createSimpleAdapter(listaMusicas);
                 lv.setAdapter(adapter);
                 Toast.makeText(MainActivity.this, R.string.noresults, Toast.LENGTH_SHORT).show();
             }
@@ -352,7 +394,8 @@ public class MainActivity extends AppCompatActivity {
                 linkYoutube.add(video);
 
                 ListView lv = (ListView) findViewById(R.id.listviewmusics);
-                ArrayAdapter<String> adapter = new ArrayAdapter<String>(MainActivity.this,android.R.layout.simple_list_item_1, listaMusicas);
+                //ArrayAdapter<String> adapter = new ArrayAdapter<String>(MainActivity.this,android.R.layout.simple_list_item_1, listaMusicas);
+                SimpleAdapter adapter = createSimpleAdapter(listaMusicas);
                 lv.setAdapter(adapter);
 
 
