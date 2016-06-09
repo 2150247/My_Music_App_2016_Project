@@ -73,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
 
         SharedPreferences sp = getSharedPreferences("appAlbuns",0);
         Set<String> albumSet = sp.getStringSet("albumKey", new HashSet<String>());
+        Set<String> linkSet = sp.getStringSet("linksKey", new HashSet<String>());
 
         Log.e(TAG, "Estou aqui -> onCreate->Persistir Dados()");
         //__________________________________________________________________________________________
@@ -108,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
 
         //Fazer cada musica ser clicavel com ligação ao youtube:
 
-        linkYoutube = new ArrayList<String>();
+        linkYoutube = new ArrayList<String>(linkSet);
 
         /*linkYoutube.add("https://www.youtube.com/watch?v=bT8FEOJEFcI&list=PLzOQr4GdVhWs0D8RA6uHlVWXtAJnw6k7y");
         linkYoutube.add("https://www.youtube.com/watch?v=ZpUYjpKg9KY&index=4&list=PLsMILDNKDKSE5LVmUS2xeod9Q9JAJI4u5");
@@ -159,22 +160,34 @@ public class MainActivity extends AppCompatActivity {
 
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener(){
             @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id){
+            public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id){
                 //Código que é executado quando se clica num item da listviewmusics
 
-                Toast.makeText(MainActivity.this, "Apagou o Álbum!", Toast.LENGTH_SHORT).show();
+
+                //Mensagem de aviso antes de apagar...
+                AlertDialog.Builder alerta=new AlertDialog.Builder(MainActivity.this);
+                alerta.setTitle("Eliminar Album");
+                alerta.setMessage("Deseja mesmo apagar o álbum?");
+                alerta.setNegativeButton("Cancelar", null);
+                alerta.setPositiveButton("Apagar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(MainActivity.this, "Apagou o Álbum!", Toast.LENGTH_SHORT).show();
 
 
-                //O que vai permitir apagar...
-                listaMusicas.remove(position);
+                        //O que vai permitir apagar...
+                        listaMusicas.remove(position);
 
-                //Atualizar de novo a lista de álbuns...
-                //ArrayAdapter<String>adapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_list_item_1,listaMusicas);
-                SimpleAdapter adapter = createSimpleAdapter(listaMusicas);
+                        //Atualizar de novo a lista de álbuns...
+                        //ArrayAdapter<String>adapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_list_item_1,listaMusicas);
+                        SimpleAdapter adapter = createSimpleAdapter(listaMusicas);
 
-                ListView listView = (ListView) findViewById(R.id.listviewmusics);
-                listView.setAdapter(adapter);
+                        ListView listView = (ListView) findViewById(R.id.listviewmusics);
+                        listView.setAdapter(adapter);
 
+                    }
+                });
+                alerta.create().show();
                 return true;
 
             }
@@ -239,9 +252,11 @@ public class MainActivity extends AppCompatActivity {
 
           // Irá fazer com que dê para guardar os albuns
         HashSet albumSet=new HashSet (listaMusicas);
+        HashSet linkSet=new HashSet (linkYoutube);
 
           //Aqui vai ser pedido a chave(Dada por mim) e os valores (Dados Albuns)...
         edit.putStringSet("albumKey"/*Chave*/, albumSet /*Valor*/);
+        edit.putStringSet("linksKey"/*Chave*/, linkSet /*Valor*/);
 
         //ENVIAR ESTE CONTEÚDO PARA O COMMIT!!
         edit.commit();
@@ -385,7 +400,7 @@ public class MainActivity extends AppCompatActivity {
                 }
 
 
-                    String newMusic = artist + " ❂ " + album + " ❂ " + year + " ❂ " + editora + " ❂ " +  " ✭ " + pontuacao_rating + " Rating ✭ ";
+                    String newMusic = artist + " ❂ " + album + " ❂ " + year + " ❂ " + editora + " ❂ " + pontuacao_rating + " Rating";
 
 
 
